@@ -1,0 +1,17 @@
+[
+  {
+    "nama": "Kaos",
+    "harga": 100000,
+    "gambar": "Kaos.jpg"
+  },
+  {
+    "nama": "Celana",
+    "harga": 50000,
+    "gambar": "Celana.jpeg"
+  },
+  {
+    "nama": "Topi",
+    "harga": 30000,
+    "gambar": "Topi.jpg"
+  }
+]

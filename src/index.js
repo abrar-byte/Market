@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import Market from './Market';
+import Pasar from './Pasar'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Pasar />
   </React.StrictMode>,
   document.getElementById('root')
 );
