@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Card,CardDeck, Container, Row, Col,Table } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import produks from './db.json';
+import './Pasar.css'
 
 
 
@@ -68,30 +69,59 @@ export default class Pasar extends Component {
           <Row>
             <Col>
               <div>
-                {this.state.produks.map((item, i) => (
-                  <div key={i}>
-                    <p>{item.nama}</p>
+              <CardDeck>
+                {this.state.produks.map((item, i) => 
+                 <Card bg="dark" text="light" key={i}>
+
+                  
+                    <Card.Img src={item.gambar} className="gambar" />
+                    <Card.Body>
+                    <Card.Title>
+                    <b>{item.nama}</b>
+                    </Card.Title>
+                    <Card.Text>
                     <p>Rp.{item.harga}</p>
-                    <img src={item.gambar} className="gambar" />
-                    <br />
-                    <br />
+                    </Card.Text>
+
+                    </Card.Body>
+
                     <button onClick={() => this.add(i)}>Tambah</button>
+                    </Card>
+                )}
+              </CardDeck>
                   </div>
-                ))}
-              </div>
+              
             </Col>
             <Col>
 
               Total:{this.state.total}
               <div>
+               <Table striped bordered hover variant="dark" responsive="sm">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Produk</th>
+              <th></th>
+              <th>@</th>
+              <th></th>
+              <th>Harga</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
                 {this.state.keranjang.map((item, i) => (
-                  <div key={i}>
-                    <span>{item.nama} </span>
-                    <span> {item.jumlah} </span>
-                    <span>Rp.{item.harga}</span>
-                  </div>
+                  <tr key={i}>
+                    <td>{item.nama} </td>
+                    <td> {item.jumlah} </td>
+                    <td>Rp.{item.harga}</td>
+                  </tr>
+
                 ))}
-              </div>
+           </tbody>
+           </Table>   
+                 <button onClick={this.remove}>Bayar</button>
+
+           </div> 
             </Col>
           </Row>
         </Container>
