@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card,CardDeck, Container, Row, Col,Table } from 'react-bootstrap';
+import { Card, CardDeck, Container, Row, Col, Table, Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import produks from './db.json';
 import './Pasar.css'
@@ -64,64 +64,73 @@ export default class Pasar extends Component {
     console.log("renderapp");
 
     return (
+
       <div>
         <Container>
+          <Navbar bg="dark" variant="dark" className="justify-content-center">
+            <Nav.Item>
+              <Navbar variant="light">E-TOKO</Navbar>
+            </Nav.Item>
+          </Navbar>
           <Row>
             <Col>
               <div>
-              <CardDeck>
-                {this.state.produks.map((item, i) => 
-                 <Card bg="dark" text="light" key={i}>
+                <CardDeck>
+                  {this.state.produks.map((item, i) =>
+                    <Card bg="dark" text="light" key={i}>
 
-                  
-                    <Card.Img src={item.gambar} className="gambar" />
-                    <Card.Body>
-                    <Card.Title>
-                    <b>{item.nama}</b>
-                    </Card.Title>
-                    <Card.Text>
-                    <p>Rp.{item.harga}</p>
-                    </Card.Text>
 
-                    </Card.Body>
+                      <Card.Img src={item.gambar} className="gambar" />
+                      <Card.Body>
+                        <Card.Title>
+                          <b>{item.nama}</b>
+                        </Card.Title>
+                        <Card.Text>
+                          <p>Rp.{item.harga}</p>
+                        </Card.Text>
 
-                    <button onClick={() => this.add(i)}>Tambah</button>
+                      </Card.Body>
+
+                      <button onClick={() => this.add(i)}>Tambah</button>
                     </Card>
-                )}
-              </CardDeck>
-                  </div>
-              
+                  )}
+                </CardDeck>
+              </div>
+
             </Col>
             <Col>
 
-              Total:{this.state.total}
+
               <div>
-               <Table striped bordered hover variant="dark" responsive="sm">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Produk</th>
-              <th></th>
-              <th>@</th>
-              <th></th>
-              <th>Harga</th>
-              <th>Total</th>
-            </tr>
-          </thead>
-          <tbody>
-                {this.state.keranjang.map((item, i) => (
-                  <tr key={i}>
-                    <td>{item.nama} </td>
-                    <td> {item.jumlah} </td>
-                    <td>Rp.{item.harga}</td>
-                  </tr>
+                <Table striped bordered hover variant="dark" responsive="sm">
+                  <thead>
+                    <tr>
+                      <th>No</th>
+                      <th>Produk</th>
 
-                ))}
-           </tbody>
-           </Table>   
-                 <button onClick={this.remove}>Bayar</button>
+                      <th>@</th>
 
-           </div> 
+                      <th>Harga</th>
+                      <th>Total</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {this.state.keranjang.map((item, i) => (
+                      <tr key={i}>
+                        <td>{i + 1}</td>
+                        <td>{item.nama} </td>
+                        <td> {item.jumlah} </td>
+                        <td>Rp.{item.harga}</td>
+
+                      </tr>
+
+                    ))}
+                  </tbody>
+                </Table>
+                Total={this.state.total}<br />
+                <button onClick={this.remove}>Bayar</button>
+
+              </div>
             </Col>
           </Row>
         </Container>
