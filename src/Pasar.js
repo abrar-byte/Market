@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardDeck, Container, Row, Col, Table, Navbar, Nav } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import produks from './db.json';
+// untuk nama dari JSON boleh terserah
 import './Pasar.css'
 
 
@@ -10,6 +11,8 @@ import './Pasar.css'
 export default class Pasar extends Component {
   state = {
     produks: produks,
+    // atau bisa ditulis "produks"
+    // ini mengambil nama dari import di atas
     keranjang: JSON.parse(localStorage.getItem("toko")) || [],
     // jumlah: 0,
     total: 0
@@ -29,33 +32,45 @@ export default class Pasar extends Component {
 
   add = (x) => {
     const items = JSON.parse(localStorage.getItem("toko")) || []
+    // wadah untuk menampung hasil rumusan di bawah ini
     const item = this.state.produks[x]
+    // mengambil index array dari produks, dari json
     const i = this.state.keranjang.findIndex(s => s.nama === item.nama)
-    //mencari index dalam array json yang sama dengan item.nama
+    //mencari index dalam array json yang sama dengan item.nama state keranjang
+    // index jika tidak ada nilainya maka -1
     if (i < 0) {
-      const k = { nama: item.nama, jumlah: 1, harga: item.harga }
+      console.log(1)
+      const k = { nama: item.nama, jumlah: 1, harga: item.harga, total: item.harga }
       items.push(k)
-      console.log(k)
+      // console.log(k)
 
     } else {
-      const c = items[x].jumlah
+      console.log(2);
+      const c = items[i].jumlah + 1
+      // mengambil index "i" yang mana "i"adalah index state keranjang.
 
-      const k = { nama: item.nama, jumlah: c + 1, harga: item.harga }
-      items.splice(x, 1, k)
-      console.log(k)
+      const k = { nama: item.nama, jumlah: c, harga: item.harga, total: item.harga * c }
+      items.splice(i, 1, k)
+      // untuk mengupdate jumlahnya jika lebih dari satu
+      // console.log(k)
+
     }
     this.setState({ keranjang: items })
     localStorage.setItem('toko', JSON.stringify(items))
 
     this.setState({ total: this.state.total + item.harga })
+    // jumlah state total yang tadinya 0 dibuat menjadi total harga dari item.harga
 
 
   }
 
 
 
+
+
   remove = () => {
     this.setState({ keranjang: [] })
+    this.setState({ total: 0 })
     localStorage.removeItem('toko')
 
   }
@@ -121,6 +136,7 @@ export default class Pasar extends Component {
                         <td>{item.nama} </td>
                         <td> {item.jumlah} </td>
                         <td>Rp.{item.harga}</td>
+                        <td>Rp{item.total}</td>
 
                       </tr>
 

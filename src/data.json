@@ -1,0 +1,26 @@
+[
+  {
+    "nama": "Mobil Alpard",
+    "detail": "Mobil Alpard paling murah sedunia, sangat sesuai dengan kantong anda",
+    "harga": 1000000,
+    "gambar": "alpard.jpeg"
+  },
+  {
+    "nama": "Mobil Pajero",
+    "detail": "Kelebihan=panas njobo jero",
+    "harga": 500000,
+    "gambar": "pajero.jpeg"
+  },
+  {
+    "nama": "Mobil Gedang",
+    "detail": "Mengandung vitamin A",
+    "harga": 5000000,
+    "gambar": "gedang.jpeg"
+  },
+  {
+    "nama": "Mobil Anyaman",
+    "detail": "Definisi mobil kalo ketabrak becak yang rusak malah mobilnya",
+    "harga": 50000,
+    "gambar": "Triplek.jpeg"
+  }
+]

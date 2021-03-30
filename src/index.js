@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Simpel from './Simpel';
 // import Market from './Market';
-import Pasar from './Pasar'
+// import Pasar from './Pasar'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Pasar />
+    <Simpel />
   </React.StrictMode>,
   document.getElementById('root')
 );
